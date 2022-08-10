@@ -30,7 +30,6 @@ namespace Incedo_Octavius_Demo_2.Controllers
                     cmd.Connection = dbConnection;
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "KOL_Name_Image";
-                    cmd.Parameters.AddWithValue("profileStatus", 1);
                     cmd.Parameters.AddWithValue("TA_ID", 1);
 
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter(cmd);
