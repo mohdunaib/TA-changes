@@ -110,7 +110,6 @@ namespace Incedo_Octavius_Demo_2.Controllers
                     cmd.CommandText = "KOL_Name_Image";
                     cmd.Parameters.AddWithValue("profileStatus", 2);
                     cmd.Parameters.AddWithValue("TA_ID", 1);
-                    
                     //cmd.ExecuteReader();
 
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter(cmd);
