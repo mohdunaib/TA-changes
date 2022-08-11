@@ -61,7 +61,7 @@ namespace Incedo_Octavius_Demo_2.Controllers
 
             }
 
-            return View(kolNameImageList.ToList().ToPagedList(page ?? 1, 8));
+            return View(kolNameImageList);
         }
     }
 }
