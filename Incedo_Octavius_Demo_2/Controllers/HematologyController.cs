@@ -8,6 +8,8 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Incedo_Octavius_Demo_2.Controllers
 {
@@ -16,7 +18,7 @@ namespace Incedo_Octavius_Demo_2.Controllers
         // GET: Oncology
         private Incedo_Octavius_Demo_2_kol_degree_map_table_Context db = new Incedo_Octavius_Demo_2_kol_degree_map_table_Context();
         // GET: KOL_Image
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             List<KOL_Image> kolNameImageList = new List<KOL_Image>();
             string constr = ConfigurationManager.ConnectionStrings["Incedo_Octavius_Demo_2_kol_table_Context"].ConnectionString;
@@ -29,7 +31,7 @@ namespace Incedo_Octavius_Demo_2.Controllers
                     MySqlCommand cmd = new MySqlCommand();
                     cmd.Connection = dbConnection;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "KOL_Name_Image";
+                    cmd.CommandText = "TA_Image";
                     cmd.Parameters.AddWithValue("TA_ID", 2);
 
                     MySqlDataAdapter dataAdapter = new MySqlDataAdapter(cmd);
@@ -58,7 +60,7 @@ namespace Incedo_Octavius_Demo_2.Controllers
 
             }
 
-            return View(kolNameImageList);
+            return View(kolNameImageList.ToList().ToPagedList(page ?? 1, 8));
         }
     }
 }
